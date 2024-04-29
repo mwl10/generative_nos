@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+The style file: apa.bst
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+Database file #1: ref.bib
+Warning--entry type for "haiku2020github" isn't style-file defined
+--line 57 of file ref.bib
+You've used 8 entries,
+            1940 wiz_defined-function locations,
+            508 strings with 5034 characters,
+and the built_in function-call counts, 3361 in all, are:
+= -- 299
+> -- 234
+< -- 1
++ -- 89
+- -- 84
+* -- 327
+:= -- 629
+add.period$ -- 19
+call.type$ -- 8
+change.case$ -- 82
+chr.to.int$ -- 7
+cite$ -- 8
+duplicate$ -- 92
+empty$ -- 164
+format.name$ -- 94
+if$ -- 601
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 3
+newline$ -- 38
+num.names$ -- 24
+pop$ -- 70
+preamble$ -- 1
+purify$ -- 82
+quote$ -- 0
+skip$ -- 71
+stack$ -- 0
+substring$ -- 163
+swap$ -- 11
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 48
+warning$ -- 0
+while$ -- 19
+width$ -- 0
+write$ -- 91
+(There was 1 warning)

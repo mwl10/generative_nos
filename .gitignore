@@ -4,5 +4,7 @@
 **/*.out
 **/*.bak
 **/*.aux
+**/*.bcf
+**/*.xml
 **/*.synctex.gz
 **/*__pycache__/

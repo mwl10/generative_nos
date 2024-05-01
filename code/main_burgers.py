@@ -189,7 +189,7 @@ if __name__=="__main__":
     dataset_folder = fstr("../data/{problem}/")
 
     save_results_bool = True
-    print_bool = False
+    print_bool = True
 
     problem = "Burgers"
     opt_choice = "adam"

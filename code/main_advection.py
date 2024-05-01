@@ -195,7 +195,7 @@ if __name__=="__main__":
     dataset_folder = fstr("../data/{problem}/")
 
     save_results_bool = True
-    print_bool = True
+    print_bool = False
 
     problem = "Advection"
     opt_choice = "adam"

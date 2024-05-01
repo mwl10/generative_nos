@@ -22,31 +22,37 @@ from utils import *
 
 
 def get_data():
-    sub_x = 2 ** 6
-    sub_y = 2 ** 6
+    filename = "../data/Advection/train_IC1.npz"
+    nx = 40
+    nt = 40
+    data = np.load(filename)
+    x = data["x"].astype(np.float32)
+    t = data["t"].astype(np.float32)
+    u = data["u"].astype(np.float32)  # N x nt x nx
 
-    # Data is of the shape (number of samples = 2048, grid size = 2^13)
-    data = io.loadmat(str(dataset_folder)+"burgers_data_R10.mat")
-    x_data = data["a"][:, ::sub_x].astype(onp.float32)
-    y_data = data["u"][:, ::sub_y].astype(onp.float32)
-    x_branch_train = x_data[:N, :]
-    y_train = y_data[:N, :]
-    x_branch_test = x_data[-N_test:, :]
-    y_test = y_data[-N_test:, :]
+    u0 = u[:, 0, :]  # N x nx
+    xt = np.vstack((np.ravel(x), np.ravel(t))).T
+    u = u.reshape(-1, nt * nx)
 
-    s = 2 ** 13 // sub_y  # total grid size divided by the subsampling rate
-    grid = onp.linspace(0, 1, num=2 ** 13)[::sub_y, None]
+    train_input = (u0, xt)
+    ytr = u
 
-    x_branch_train = x_branch_train.astype(dtype)
-    grid = grid.astype(dtype)
-    x_branch_test = x_branch_test.astype(dtype)
-    y_train = y_train.astype(dtype)
-    y_test = y_test.astype(dtype)
+    filename = "../data/Advection/test_IC1.npz"
+    nx = 40
+    nt = 40
+    data = np.load(filename)
+    x = data["x"].astype(np.float32)
+    t = data["t"].astype(np.float32)
+    u = data["u"].astype(np.float32)  # N x nt x nx
 
-    x_train = (x_branch_train, grid)
-    x_test = (x_branch_test, grid)
-    return x_train, y_train, x_test, y_test
+    u0 = u[:, 0, :]  # N x nx
+    xt = np.vstack((np.ravel(x), np.ravel(t))).T
+    u = u.reshape(-1, nt * nx)
 
+    test_input = (u0, xt)
+    ytest = u
+
+    return train_input, ytr, test_input, ytest
 
 def train_func(train_info):
     # to store results
@@ -189,9 +195,9 @@ if __name__=="__main__":
     dataset_folder = fstr("../data/{problem}/")
 
     save_results_bool = True
-    print_bool = False
+    print_bool = True
 
-    problem = "Burgers"
+    problem = "Advection"
     opt_choice = "adam"
     schedule_choice = "inverse_time_decay"
 
@@ -201,7 +207,7 @@ if __name__=="__main__":
     # activations
     activation_choice = "leaky_relu"
 
-    m = 128
+    m = 40
     N = 1000
     N_test = 200
 
